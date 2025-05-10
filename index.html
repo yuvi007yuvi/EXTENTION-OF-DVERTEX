@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="images/SAFAIMITRA.PNG" type="image/png">
+  <title>DVERTEX INFO SYSTEM</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+  <canvas id="bg-canvas"></canvas>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <img src="images/SAFAIMITRA.PNG" alt="Logo" class="logo-image">
+        <h1>DVERTEX INFO SYSTEM</h1>
+      </div>
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="Search the web...">
+        <button id="search-button">Search</button>
+      </div>
+      <div class="settings-icon" id="settings-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </div>
+    </header>
+
+    <div class="settings-panel" id="settings-panel">
+      <h2>Customize Background</h2>
+      <div class="settings-section">
+        <label for="bg-color">Background Color:</label>
+        <input type="color" id="bg-color" value="#121212">
+      </div>
+      <div class="settings-section">
+        <label for="bg-image">Background Image:</label>
+        <input type="file" id="bg-image" accept="image/*">
+      </div>
+      <div class="settings-section">
+        <button id="reset-bg">Reset to Default</button>
+      </div>
+    </div>
+
+    <main>
+      <section class="ai-tools-section">
+        <h2>AI Assistant Tools</h2>
+        <div class="ai-tools-container">
+          <a href="https://chat.openai.com" target="_blank" class="ai-tool-button chatgpt">
+            <div class="ai-tool-icon">AI</div>
+            <span class="ai-tool-title">ChatGPT</span>
+          </a>
+          <a href="https://deepseek.com" target="_blank" class="ai-tool-button deepseek">
+            <div class="ai-tool-icon">DS</div>
+            <span class="ai-tool-title">Deepseek</span>
+          </a>
+          <a href="https://bard.google.com" target="_blank" class="ai-tool-button bard">
+            <div class="ai-tool-icon">GB</div>
+            <span class="ai-tool-title">Google Bard</span>
+          </a>
+          <a href="https://www.anthropic.com/claude" target="_blank" class="ai-tool-button claude">
+            <div class="ai-tool-icon">CL</div>
+            <span class="ai-tool-title">Claude</span>
+          </a>
+        </div>
+      </section>
+      <section class="info-cards">
+        <div class="card weather">
+          <h2>Weather</h2>
+          <div class="card-content" id="weather-content">
+            <div class="placeholder-content">
+              <p>Weather information will appear here</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card news">
+          <h2>Latest News</h2>
+          <div class="card-content" id="news-content">
+            <div class="placeholder-content">
+              <p>News headlines will appear here</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card tasks">
+          <h2>Tasks</h2>
+          <div class="card-content">
+            <div class="task-input">
+              <input type="text" id="task-input" placeholder="Add a new task...">
+              <button id="add-task">Add</button>
+            </div>
+            <ul id="task-list">
+              <!-- Tasks will be added here -->
+            </ul>
+          </div>
+        </div>
+
+        <div class="card notes">
+          <h2>Quick Notes</h2>
+          <div class="card-content">
+            <textarea id="notes-area" placeholder="Write your notes here..."></textarea>
+            <button id="save-notes">Save</button>
+          </div>
+        </div>
+        
+        <div class="card quick-links">
+          <h2>Quick Links</h2>
+          <div class="card-content" id="quick-links-container">
+            <button class="add-quick-link" onclick="document.querySelector('.quick-link-popup').classList.add('active')">+ Add Quick Link</button>
+          </div>
+        </div>
+      </section>
+
+
+    </main>
+
+    <footer>
+      <p>DVERTEX INFO SYSTEM © 2023 | A Colorful Chrome Extension</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
