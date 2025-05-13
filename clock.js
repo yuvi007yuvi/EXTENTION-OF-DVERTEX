@@ -1,51 +1,28 @@
-// Analog Clock Implementation
-function setupAnalogClock() {
-  const clockFace = document.createElement('div');
-  clockFace.className = 'clock-face';
+// Digital Clock Implementation
+function updateDigitalClock() {
+  const now = new Date();
+  let hours = now.getHours();
+  const minutes = now.getMinutes().toString().padStart(2, '0');
+  const seconds = now.getSeconds().toString().padStart(2, '0');
+  const ampm = hours >= 12 ? 'PM' : 'AM';
   
-  const hourHand = document.createElement('div');
-  hourHand.className = 'clock-hand hour-hand';
+  // Convert to 12-hour format
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
   
-  const minuteHand = document.createElement('div');
-  minuteHand.className = 'clock-hand minute-hand';
+  const timeString = `${hours}:${minutes}:${seconds} ${ampm}`;
   
-  const secondHand = document.createElement('div');
-  secondHand.className = 'clock-hand second-hand';
+  // Update date
+  const options = { weekday: 'short', month: 'short', day: 'numeric' };
+  const dateString = now.toLocaleDateString('en-US', options).toUpperCase();
   
-  const clockCenter = document.createElement('div');
-  clockCenter.className = 'clock-center';
-  
-  clockFace.append(hourHand, minuteHand, secondHand, clockCenter);
-  
-  const analogClock = document.createElement('div');
-  analogClock.className = 'analog-clock';
-  analogClock.appendChild(clockFace);
-  
-  // Find the digital clock container and insert analog clock next to it
-  const timeContainer = document.querySelector('.time-container');
-  if (timeContainer) {
-    timeContainer.insertAdjacentElement('afterbegin', analogClock);
-  }
-  
-  function updateClock() {
-    const now = new Date();
-    const hours = now.getHours() % 12;
-    const minutes = now.getMinutes();
-    const seconds = now.getSeconds();
-    
-    const hourDeg = (hours * 30) + (minutes * 0.5);
-    const minuteDeg = minutes * 6;
-    const secondDeg = seconds * 6;
-    
-    hourHand.style.transform = `rotate(${hourDeg}deg)`;
-    minuteHand.style.transform = `rotate(${minuteDeg}deg)`;
-    secondHand.style.transform = `rotate(${secondDeg}deg)`;
-  }
-  
-  // Update immediately and then every second
-  updateClock();
-  setInterval(updateClock, 1000);
+  // Update DOM
+  document.querySelector('.time').textContent = timeString;
+  document.querySelector('.date').textContent = dateString;
 }
 
 // Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', setupAnalogClock);
+document.addEventListener('DOMContentLoaded', () => {
+  updateDigitalClock();
+  setInterval(updateDigitalClock, 1000);
+});
