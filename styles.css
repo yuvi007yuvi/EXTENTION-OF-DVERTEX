@@ -23,10 +23,12 @@
   --text-secondary: #666666;
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   --section-border: 1px solid #e0e0e0;
+  --search-border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 :root {
   --section-border: 1px solid #333333;
+  --search-border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* * {
@@ -296,6 +298,7 @@ header {
   border-radius: 25px;
   padding: 0 15px;
   transition: all 0.3s ease;
+  border: var(--search-border);
 }
 
 .search-box:hover {
