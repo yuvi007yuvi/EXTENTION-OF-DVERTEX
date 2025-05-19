@@ -69,11 +69,16 @@
   background: var(--card-bg-color);
   border-radius: 12px;
   padding: 1.5rem;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-link {
   display: flex;
   align-items: center;
   gap: 1rem;
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: inherit;
 }
 
 .project-card:hover {

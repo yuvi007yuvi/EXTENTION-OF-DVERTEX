@@ -1,0 +1,23 @@
+/* Remove underlines from all links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove underlines from specific link classes */
+.quick-link,
+.project-card,
+.google-app,
+.ai-tool-button {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Ensure no underline on hover */
+a:hover,
+.quick-link:hover,
+.project-card:hover,
+.google-app:hover,
+.ai-tool-button:hover {
+  text-decoration: none;
+}
